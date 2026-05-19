@@ -1,0 +1,24 @@
+<div class="container" style="max-width: 800px;">
+
+  <div class="d-flex align-items-center gap-3 mb-3">
+    <h2 class="mb-0"><%= @article.title %></h2>
+
+    <%= link_to edit_article_path(@article), class: "text-decoration-none" do %>
+      <i class="fa-solid fa-pencil fs-3"></i>
+    <% end %>
+
+    <%= link_to article_path(@article),
+                class: "text-decoration-none",
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <i class="fa-solid fa-trash fs-3"></i>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="article-content">
+    <%= simple_format(@article.content) %>
+  </div>
+
+  <%= link_to "Back to list", articles_path, class: "btn btn-outline-secondary mt-3" %>
+</div>
